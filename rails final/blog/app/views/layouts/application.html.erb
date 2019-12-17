@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+  <!--<%= stylesheet_link_tag 'http://augis.rf.gd/viko/mississippi/style/main3black.css' %> -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<style>
+  html {
+  min-height: 100%;
+  position: relative;
+  box-shadow: inset 0 0 50rem rgba(0, 0, 0, .2);
+}
+
+body {
+  background-color:  #1b2631;
+  color: #777;
+  text-shadow: 0 .05rem .05rem rgba(0, 0, 0, .2);
+  font: sans-serif;
+  margin:0;
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size:14px;
+  line-height:1.5;
+}
+
+
+.text-center{text-align: center}
+.paddingtop{padding-top: 20px;}
+.padding20 {padding: 20px;}
+.padding50 {padding-top:50px; text-align:center;}
+.padding20f {padding-right: 20px; padding-bottom: 21px;}
+.marginf {margin-bottom: -35px;}
+.padding40 {padding: 40px;}
+
+
+
+.title{
+font-size: 30px;
+padding: auto;
+color: #fff;
+}
+
+a.title:focus, a.title:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #999;
+  text-shadow: 0 .05rem .05rem rgba(0, 0, 0, 1);
+  border: 0;
+}
+
+.navbar, .navbar-collapse {
+background-color: #333;
+border: 0px;
+min-height:50px;
+border-bottom: 5px #08c solid;
+border-radius: 0px;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border: 0;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #000 !important;
+    background-color: #f6f9fc;
+  text-shadow: 0 .01rem .02rem rgba(0, 0, 0, 1);
+}
+
+.active{color:#f5f5f5 !important; background:#08c;}
+
+hr {border-bottom: 1px dashed #1ab;}
+
+
+
+.container {
+ padding-right:15px;
+ padding-left:15px;
+ margin:auto;
+ overflow:hidden;
+ width:80%;
+}
+
+.content{
+  display: block;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+
+
+img {
+    height: auto; 
+    max-width: 100%; 
+}
+
+
+
+}
+</style>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="title" href="<%= home_path %>">Blog</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", home_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "History", history_path %></li>
+        <li><%= link_to "Photos", photos_path %></li>
+    </div>
+</nav>
+
+<nav class="navbar navbar-default" style="border:none; margin:-20px 0 0 0;width:auto;
+float: right">
+            <ul class="nav navbar-nav navbar-right" style="margin:0">
+             <!-- <%= form_tag(search_page_path, :method => "get",
+                     class: 'navbar-form navbar-left') do %>
+          <div class="input-group">
+            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+            <div class="input-group-btn">
+              <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>
+                      <% end %> -->
+        <% if current_user %>
+        <li><h4>Hello, <%= current_user.email %></h4></li>
+        <li><%= link_to "Create Post", new_entry_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% else %>
+
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', new_user_session_path %></li>
+        <% end %>
+      
+        </ul>
+</nav>
+<br>
+<!--<%= render 'layouts/alerts' %> -->
+<div class="text-center content">
+  <%= yield %>
+</div>
+
+</body>
+</html>

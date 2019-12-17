@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+  <div class="well" style="background-color: #213946">
+
+<h2>
+  <%= @entry.title %></h2>
+
+<p>
+  <%= @entry.body %>
+</p>
+
+  <p style="text-align: right">By:<strong> <%= @entry.user.email %> </strong>
+</p>
+</div>
+<% if current_user && current_user.id == @entry.user.id || current_user.id == 1 %>
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Delet this', entry_path, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', entries_path %>
+<% end %>
