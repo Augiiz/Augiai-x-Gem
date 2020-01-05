@@ -1,49 +1,51 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class Posts1sTest < ApplicationSystemTestCase
   setup do
     @posts1 = posts1s(:one)
   end
 
-  test "visiting the index" do
+  test 'visiting the index' do
     visit posts1s_url
-    assert_selector "h1", text: "Posts1s"
+    assert_selector 'h1', text: 'Posts1s'
   end
 
-  test "creating a Posts1" do
+  test 'creating a Posts1' do
     visit posts1s_url
-    click_on "New Posts1"
+    click_on 'New Posts1'
 
-    fill_in "Body", with: @posts1.body
-    fill_in "Text", with: @posts1.text
-    fill_in "Title", with: @posts1.title
-    fill_in "User", with: @posts1.user_id
-    click_on "Create Posts1"
+    fill_in 'Body', with: @posts1.body
+    fill_in 'Text', with: @posts1.text
+    fill_in 'Title', with: @posts1.title
+    fill_in 'User', with: @posts1.user_id
+    click_on 'Create Posts1'
 
-    assert_text "Posts1 was successfully created"
-    click_on "Back"
+    assert_text 'Posts1 was successfully created'
+    click_on 'Back'
   end
 
-  test "updating a Posts1" do
+  test 'updating a Posts1' do
     visit posts1s_url
-    click_on "Edit", match: :first
+    click_on 'Edit', match: :first
 
-    fill_in "Body", with: @posts1.body
-    fill_in "Text", with: @posts1.text
-    fill_in "Title", with: @posts1.title
-    fill_in "User", with: @posts1.user_id
-    click_on "Update Posts1"
+    fill_in 'Body', with: @posts1.body
+    fill_in 'Text', with: @posts1.text
+    fill_in 'Title', with: @posts1.title
+    fill_in 'User', with: @posts1.user_id
+    click_on 'Update Posts1'
 
-    assert_text "Posts1 was successfully updated"
-    click_on "Back"
+    assert_text 'Posts1 was successfully updated'
+    click_on 'Back'
   end
 
-  test "destroying a Posts1" do
+  test 'destroying a Posts1' do
     visit posts1s_url
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on 'Destroy', match: :first
     end
 
-    assert_text "Posts1 was successfully destroyed"
+    assert_text 'Posts1 was successfully destroyed'
   end
 end

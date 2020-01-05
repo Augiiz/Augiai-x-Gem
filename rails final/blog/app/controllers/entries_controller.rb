@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_entry, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[show index]
   # GET /entries
   # GET /entries.json
   def index
@@ -9,8 +11,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1
   # GET /entries/1.json
-  def show
-  end
+  def show; end
 
   # GET /entries/new
   def new
@@ -18,8 +19,7 @@ class EntriesController < ApplicationController
   end
 
   # GET /entries/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /entries
   # POST /entries.json
@@ -62,13 +62,14 @@ class EntriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_entry
-      @entry = Entry.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def entry_params
-      params.require(:entry).permit(:title, :body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_entry
+    @entry = Entry.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def entry_params
+    params.require(:entry).permit(:title, :body)
+  end
 end
