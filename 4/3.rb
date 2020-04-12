@@ -8,7 +8,7 @@ puts 'iveskite antra krastine:'
 y = gets.to_f
 puts 'iveskite trecia krastine:'
 z = gets.to_f
-# s
+
 class Trikampiai
   def trikampis(x, y, z)
     if x + y > z && x + z > y && y + z > x
